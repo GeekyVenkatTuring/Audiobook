@@ -139,6 +139,13 @@ Each backend implements the same small interface (`LayoutAnalyzer`, `OCREngine`,
 nothing downstream changes. Rationale, trade-offs and links are in
 [`RESEARCH.md`](RESEARCH.md).
 
+> **Note on `--align ctc`:** install the aligner from the original repo —
+> `pip install "git+https://github.com/MahmoudAshraf97/ctc-forced-aligner.git"`. The PyPI
+> name `ctc-forced-aligner` now points at a diverged (ONNX) fork with a different API; this
+> adapter targets the documented MMS-300M torch model. First run downloads the ~300M model
+> from Hugging Face. `AUDIOBOOK_ALIGN_DEVICE` (default `cpu`) and `AUDIOBOOK_ALIGN_MODEL`
+> override the device / model id without code changes.
+
 Example with the full ML stack:
 ```bash
 python -m audiobook.cli book.pdf -o out \
