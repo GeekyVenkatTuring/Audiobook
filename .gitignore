@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Generated pipeline output (audio, timing, rendered pages)
+output/
+out/
+*.wav
+!server/static/**/*.wav
+audiobook_jobs/
+sample.pdf
+
+# ML model caches / weights
+.cache/
+*.pt
+*.onnx
+models/
+~/.cache/huggingface
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/

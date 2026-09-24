@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PDF → Audiobook</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <!-- PDF.js from CDN; the worker is configured in viewer.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.4.168/pdf.min.mjs" type="module"></script>
+</head>
+<body>
+  <header>
+    <h1>PDF → Audiobook</h1>
+    <div class="controls">
+      <label class="file-btn">
+        Open PDF
+        <input id="file" type="file" accept="application/pdf" hidden />
+      </label>
+      <select id="tts" title="TTS backend">
+        <option value="estimated">estimated (offline)</option>
+        <option value="pyttsx3">pyttsx3 (OS voice)</option>
+        <option value="kokoro">kokoro (HQ, ML)</option>
+      </select>
+      <span id="status" class="status">Open a PDF, or append ?src=/out to load a pre-built job.</span>
+    </div>
+  </header>
+
+  <main>
+    <div id="stage" class="stage">
+      <canvas id="canvas"></canvas>
+      <!-- The highlight rectangle is an absolutely-positioned div over the canvas -->
+      <div id="highlight" class="highlight"></div>
+    </div>
+  </main>
+
+  <footer>
+    <audio id="audio" controls></audio>
+    <div class="pageinfo"><span id="pagelabel"></span></div>
+  </footer>
+
+  <script src="/static/viewer.js" type="module"></script>
+</body>
+</html>

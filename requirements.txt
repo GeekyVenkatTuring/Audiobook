@@ -1,0 +1,13 @@
+# Core (light) dependencies — the offline pipeline + web viewer run with just these.
+# No ML models, no downloads required.
+
+pymupdf>=1.24            # PDF text + per-word bbox extraction, page rendering (RESEARCH.md §1)
+
+# Web server / viewer
+fastapi>=0.110
+uvicorn[standard]>=0.29
+python-multipart>=0.0.9  # multipart form parsing for PDF upload
+
+# Optional but tiny: OS text-to-speech (needs a system speech engine like espeak-ng).
+# Uncomment to enable the 'pyttsx3' TTS backend.
+# pyttsx3>=2.90
