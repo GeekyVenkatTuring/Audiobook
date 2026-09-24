@@ -1,0 +1,31 @@
+# Optional heavy providers - install ONLY if you want neural OCR / TTS or
+# deep-learning layout analysis. These pull in torch and can download
+# multiple gigabytes of weights on first use.
+#
+#   pip install -r requirements-ml.txt
+#
+# Then enable them via options (see README): ocr_provider=got_ocr / doctr,
+# tts_provider=kokoro, layout_backend=ppstructure.
+
+torch>=2.2
+transformers>=4.44
+accelerate>=0.30
+
+# --- OCR (primary recommendation: GOT-OCR2.0) -------------------------------
+# Primary:  stepfun-ai/GOT-OCR2_0
+#           transformers-native mirror: yonigozlan/GOT-OCR-2.0-hf
+# Lightweight neural fallback:
+python-doctr[torch]>=0.8
+
+# --- Layout analysis / tables (optional deep-learning backend) --------------
+# PP-StructureV3 / PP-DocLayout-plus give the strongest layout+table results.
+paddleocr>=2.7
+paddlepaddle>=2.6
+
+# --- High-quality local TTS -------------------------------------------------
+kokoro>=0.3.0          # hexgrad/Kokoro-82M, Apache-2.0, exposes token timings
+soundfile>=0.12
+
+# --- Optional word-level forced alignment for tighter highlight timing ------
+# whisperx>=3.1
+# aeneas   # sentence-level, lighter, needs eSpeak + ffmpeg

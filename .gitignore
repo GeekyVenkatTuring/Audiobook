@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+.pytest_cache/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Runtime output (generated jobs: audio, manifests, uploaded PDFs)
+data/
+backend/data/
+*.wav
+*.mp3
+
+# Node (if a JS toolchain is ever added to frontend)
+node_modules/
+
+# Env / secrets
+.env
+.env.*
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+
+# Model caches
+.cache/
+*.onnx

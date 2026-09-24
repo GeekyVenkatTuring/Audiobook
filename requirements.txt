@@ -1,0 +1,18 @@
+# Core dependencies - light, install fast, no multi-GB model downloads.
+# The application runs end-to-end with only these installed (using the
+# built-in stdlib "estimator" TTS and, if the Tesseract binary is present,
+# the Tesseract OCR provider). See requirements-ml.txt for optional
+# neural OCR/TTS providers.
+
+fastapi>=0.110
+uvicorn[standard]>=0.29
+python-multipart>=0.0.9
+PyMuPDF>=1.24          # layout analysis + text/word/image/drawing extraction
+pydantic>=2.6
+
+# Optional-but-light providers (guarded imports; safe if their system
+# binaries/network are unavailable, the pipeline falls back automatically):
+pyttsx3>=2.90          # offline TTS, needs system eSpeak/NSSpeech/SAPI5
+pytesseract>=0.3.10    # OCR wrapper, needs the `tesseract` system binary
+Pillow>=10.0           # image handling for OCR / page rasterization
+gTTS>=2.5              # online TTS (Google Translate), needs network
