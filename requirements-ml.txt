@@ -24,6 +24,8 @@ soundfile>=0.12
 
 # --- Real forced alignment (RESEARCH.md §5) ---
 # ctc-forced-aligner (MahmoudAshraf/mms-300m-1130-forced-aligner) — frame-accurate timing.
-# ctc-forced-aligner>=1.0
+# Install from the original repo: the PyPI `ctc-forced-aligner` name is now a different
+# (ONNX) fork, whereas this adapter targets the documented MMS-300M torch API + model.
+# ctc-forced-aligner @ git+https://github.com/MahmoudAshraf97/ctc-forced-aligner.git
 # WhisperX (only if aligning pre-recorded human audio):
 # whisperx>=3.1
