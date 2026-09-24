@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PDF Audiobook</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>PDF &rarr; Audiobook</h1>
+    <p class="tagline">Upload a PDF. It is read aloud while the text is highlighted, Kindle-style.</p>
+  </header>
+
+  <section id="controls">
+    <form id="upload-form">
+      <label class="file">
+        <input type="file" id="file" accept="application/pdf" required />
+        <span>Choose PDF</span>
+      </label>
+
+      <fieldset class="opts">
+        <legend>Reading options</legend>
+        <label><input type="checkbox" id="read_figures" /> Read figures/diagrams</label>
+        <label><input type="checkbox" id="read_tables" /> Read tables (row by row)</label>
+        <label><input type="checkbox" id="read_captions" checked /> Read captions</label>
+        <label><input type="checkbox" id="speak_placeholders" checked /> Announce skipped items</label>
+        <label class="prov">TTS:
+          <select id="tts_provider">
+            <option value="auto">auto</option>
+            <option value="estimator">estimator (silent, always works)</option>
+            <option value="pyttsx3">pyttsx3 (offline)</option>
+            <option value="gtts">gTTS (online)</option>
+            <option value="kokoro">kokoro (neural, extra)</option>
+          </select>
+        </label>
+        <label class="prov">OCR:
+          <select id="ocr_provider">
+            <option value="auto">auto</option>
+            <option value="tesseract">tesseract</option>
+            <option value="got_ocr">GOT-OCR2.0 (extra)</option>
+            <option value="doctr">docTR (extra)</option>
+            <option value="none">none</option>
+          </select>
+        </label>
+      </fieldset>
+
+      <button type="submit" id="go">Create audiobook</button>
+      <span id="status"></span>
+    </form>
+
+    <div id="player" hidden>
+      <audio id="audio" controls></audio>
+    </div>
+  </section>
+
+  <main id="viewer" aria-label="PDF pages"></main>
+
+  <!-- pdf.js from CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

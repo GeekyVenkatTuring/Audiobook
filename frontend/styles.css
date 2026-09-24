@@ -1,0 +1,105 @@
+:root {
+  --bg: #0f1220;
+  --panel: #191d2e;
+  --ink: #e7e9f3;
+  --muted: #9aa0b5;
+  --accent: #6ea8fe;
+  --hl: rgba(255, 214, 10, 0.38);
+  --hl-border: rgba(255, 196, 0, 0.9);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+header {
+  padding: 18px 24px 6px;
+}
+header h1 { margin: 0; font-size: 22px; }
+.tagline { margin: 4px 0 0; color: var(--muted); font-size: 14px; }
+
+#controls {
+  padding: 12px 24px 18px;
+  border-bottom: 1px solid #262b41;
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  z-index: 10;
+}
+
+#upload-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+}
+
+.file { position: relative; overflow: hidden; }
+.file input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.file span,
+button, select {
+  background: var(--panel);
+  color: var(--ink);
+  border: 1px solid #2c3350;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 14px;
+  cursor: pointer;
+}
+button#go { background: var(--accent); color: #08122b; font-weight: 600; border: none; }
+button#go:disabled { opacity: .5; cursor: default; }
+
+.opts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  align-items: center;
+  border: 1px solid #2c3350;
+  border-radius: 10px;
+  padding: 8px 12px;
+}
+.opts legend { color: var(--muted); font-size: 12px; padding: 0 6px; }
+.opts label { font-size: 13px; color: var(--ink); display: inline-flex; gap: 6px; align-items: center; }
+.opts select { padding: 4px 8px; }
+
+#status { color: var(--muted); font-size: 13px; }
+
+#player { margin-top: 12px; }
+#player audio { width: 100%; max-width: 760px; }
+
+#viewer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  padding: 24px;
+}
+
+.page-wrap {
+  position: relative;
+  box-shadow: 0 6px 24px rgba(0,0,0,.45);
+  background: #fff;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.page-wrap canvas { display: block; }
+
+.overlay { position: absolute; inset: 0; }
+.hl {
+  position: absolute;
+  background: transparent;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background .08s ease;
+}
+.hl:hover { background: rgba(110,168,254,.18); }
+.hl.active {
+  background: var(--hl);
+  outline: 2px solid var(--hl-border);
+}
+.hl.figure.active, .hl.table.active { outline-style: dashed; }
