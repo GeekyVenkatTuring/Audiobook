@@ -1,0 +1,29 @@
+# Optional heavy ML backends. Install ONLY the ones you want to enable — these pull in
+# torch and large model weights. The core pipeline (requirements.txt) does not need any of
+# these. See RESEARCH.md for the rationale behind each pick.
+
+# --- High-quality TTS (RESEARCH.md §4) ---
+# Default recommended voice: Kokoro-82M (hexgrad/Kokoro-82M, Apache-2.0)
+kokoro>=0.9.4
+soundfile>=0.12
+# Lightweight fallback voice: Piper (rhasspy/piper-voices, MIT). Also needs a downloaded
+# voice .onnx model; the `piper` binary is invoked by the backend.
+# piper-tts>=1.2
+
+# --- Advanced layout analysis (RESEARCH.md §2) ---
+# DocLayout-YOLO (opendatalab/DocLayout-YOLO) — primary recommendation.
+# doclayout-yolo>=0.0.3
+# huggingface_hub>=0.23
+
+# --- OCR for scanned PDFs (RESEARCH.md §3) ---
+# Surya OCR — widest multilingual coverage (default OCR recommendation).
+# surya-ocr>=0.6
+# PaddleOCR — Apache-2.0 alternative.
+# paddleocr>=2.7
+# paddlepaddle>=2.6
+
+# --- Real forced alignment (RESEARCH.md §5) ---
+# ctc-forced-aligner (MahmoudAshraf/mms-300m-1130-forced-aligner) — frame-accurate timing.
+# ctc-forced-aligner>=1.0
+# WhisperX (only if aligning pre-recorded human audio):
+# whisperx>=3.1
